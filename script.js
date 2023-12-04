@@ -13,3 +13,33 @@ const homeBtn = document.getElementById("homeBtn");
 let playerName = "";
 let userScore = 0;
 let computerScore = 0;
+
+homeBtn.addEventListener("click", function (event) {
+    startPage.style.display = "block";
+    gamePage.style.display = "none";
+
+    userScore = 0;
+    computerScore = 0;
+    userScoreSpan.textContent = userScore;
+    computerScoreSpan.textContent = computerScore;
+    resultDisplay.textContent = "";
+    playerNameDisplay.textContent = "";
+    userLabel.textContent = "";
+
+    nameForm.reset();
+});
+
+startGameBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    playerName = document.getElementById("name").value;
+
+    if (!playerName) {
+        alert("Please enter your name before starting the game.");
+        return;
+    }
+
+    playerNameDisplay.textContent = `Player: ${playerName}`;
+    userLabel.textContent = playerName;
+    startPage.style.display = "none";
+    gamePage.style.display = "block";
+});
