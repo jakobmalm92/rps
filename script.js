@@ -15,18 +15,18 @@ let userScore = 0;
 let computerScore = 0;
 
 homeBtn.addEventListener("click", function (event) {
-    startPage.style.display = "block";
-    gamePage.style.display = "none";
+    startPage.style.display = "block"; //Visas
+    gamePage.style.display = "none"; //Göms
 
     userScore = 0;
     computerScore = 0;
-    userScoreSpan.textContent = userScore;
-    computerScoreSpan.textContent = computerScore;
+    userScoreSpan.textContent = userScore; //Nollställer spelet vid ny omgång
+    computerScoreSpan.textContent = computerScore; //Nollställer spelet vid ny omgång
     resultDisplay.textContent = "";
     playerNameDisplay.textContent = "";
     userLabel.textContent = "";
 
-    nameForm.reset();
+    nameForm.reset(); //Återställer alla inmatade värden till 0
 });
 
 startGameBtn.addEventListener("click", function (event) {

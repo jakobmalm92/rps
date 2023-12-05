@@ -18,6 +18,7 @@ h1 {
     font-size: 50px;
     font-weight: bold;
     color: rgb(5, 11, 48);
+    letter-spacing: 1px;
     
 }
 
@@ -37,14 +38,29 @@ input {
    border-color: brown;
 }
 
-button {
+#startGameBtn {
     padding: 5px 10px;
     font-size: 14px;
     margin-left: 10px;
     background-color: brown;
     color: aliceblue;
-    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    letter-spacing: 1px;
+    border-color: brown;
+}
+
+#homeBtn {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-left: 10px;
+    background-color: brown;
+    color: aliceblue;
+    border-radius: 5px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border-color: brown;
+    margin-top: 10px;
 }
 
 .score-board {
@@ -71,8 +87,11 @@ button {
 #user-label {
     position: absolute;
     top: 25px;
-    left: -55px;
+    left: 0;
+    transform: translateX(-50%);
+    text-align: center;
 }
+
 
 #computer-label {
     position: absolute;
@@ -86,6 +105,7 @@ button {
     text-align: center;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .choices {
@@ -111,7 +131,7 @@ button {
 
 .choice:hover {
     cursor: pointer;
-    background: blue;
+    background: rgb(116, 116, 136);
 }
 
 
