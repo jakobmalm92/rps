@@ -48,12 +48,12 @@ choices.forEach(choice => {
     choice.addEventListener("click", function () {
         const playerChoice = choice.id;
         const computerChoice = getComputerChoice();
-        const result = determineWinner(playerChoice, computerChoice);
+        const result = winner(playerChoice, computerChoice);
         resultDisplay.textContent = result;
 
-        if (result.includes("win")) {
+        if (result.includes("vann")) {
             userScore++;
-        } else if (result.includes("lose")) {
+        } else if (result.includes("förlorade")) {
             computerScore++;
         }
 
@@ -68,17 +68,17 @@ function getComputerChoice() {
     return choices[randomIndex];
 }
 
-function determineWinner(player, computer) {
+function winner(player, computer) {
     if (player === computer) {
-        return "It's a tie!";
+        return "Oavgjort!";
     } else if (
         (player === "rock" && computer === "scissors") ||
         (player === "paper" && computer === "rock") ||
         (player === "scissors" && computer === "paper")
     ) {
-        return `You win! ${player} beats ${computer}.`;
+        return "Du vann!";
     } else {
-        return `You lose! ${computer} beats ${player}.`;
+        return "Du förlorade!";
     }
 }
 
