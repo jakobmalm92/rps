@@ -3,14 +3,22 @@
     padding: 0;
 }
 
+body {
+    background-color:rgb(23, 130, 130)
+}
+
 #startPage {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 100px;
+    padding: 50px;
+    background-color:rgb(38, 157, 157)
 }
 
 h1 {
     font-size: 50px;
     font-weight: bold;
+    color: rgb(5, 11, 48);
+    
 }
 
 form {
@@ -37,4 +45,45 @@ button {
     color: aliceblue;
     border: none;
     cursor: pointer;
+}
+
+.score-board {
+    border: 3px solid white;
+    width: 350px;
+    margin: 20px auto;
+    color: white;
+    font-size: 40px;
+    border-radius: 4px;
+    text-align: center;
+    padding: 15px 10px 15px 10px;
+    position: relative;
+}
+
+.badge {
+    background: rgb(134, 65, 65);
+    color: white;
+    font-size: 20px;
+    padding: 2px 5px; 
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#user-label {
+    position: absolute;
+    top: 25px;
+    left: -55px;
+}
+
+#computer-label {
+    position: absolute;
+    top: 25px;
+    right: -55px;
+}
+
+.result {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }

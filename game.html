@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sten Sax Påse</title>
+    <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <div id="gamePage" style="display: none;">
+        <button id="homeBtn">Börja om</button>
+        <div class="score-board">
+            <div id="user-label" class="badge">Användare: <span id="playerName"></span></div>
+            <div id="computer-label" class="badge">Computer: </div>
+            <span id="user-score">0</span>:<span id="computer-score">0</span>
+        </div>
+        <h1>Sten Sax Påse</h1>
+
+        <div class="choices">
+            <div class="choice" id="rock">
+                <i class="far fa-hand-back-fist"></i>
+            </div>
+            <div class="choice" id="paper">
+                <i class="fa-regular fa-hand"></i>
+            </div>
+            <div class="choice" id="scissors">
+                <i class="fa-regular fa-hand-scissors"></i>
+            </div>
+        </div>
+
+        <div class="result"></div>
+    </div>
+
+    <!-- Common content for both pages -->
+
+</body>
+</html>

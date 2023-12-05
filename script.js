@@ -34,7 +34,7 @@ startGameBtn.addEventListener("click", function (event) {
     playerName = document.getElementById("name").value;
 
     if (!playerName) {
-        alert("Please enter your name before starting the game.");
+        alert("Skriv in ditt namn");
         return;
     }
 
