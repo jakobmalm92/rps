@@ -34,7 +34,7 @@ startGameBtn.addEventListener("click", function (event) {
     playerName = document.getElementById("name").value;
 
     if (!playerName) {
-        alert("Please enter your name before starting the game.");
+        alert("Skriv in ditt namn!");
         return;
     }
 
@@ -43,3 +43,42 @@ startGameBtn.addEventListener("click", function (event) {
     startPage.style.display = "none";
     gamePage.style.display = "block";
 });
+
+choices.forEach(choice => {
+    choice.addEventListener("click", function () {
+        const playerChoice = choice.id;
+        const computerChoice = getComputerChoice();
+        const result = winner(playerChoice, computerChoice);
+        resultDisplay.textContent = result;
+
+        if (result.includes("win")) {
+            userScore++;
+        } else if (result.includes("lose")) {
+            computerScore++;
+        }
+
+        userScoreSpan.textContent = userScore;
+        computerScoreSpan.textContent = computerScore;
+    });
+});
+
+function getComputerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+}
+
+function winner(player, computer) {
+    if (player === computer) {
+        return "Oavgjort!";
+    } else if (
+        (player === "rock" && computer === "scissors") ||
+        (player === "paper" && computer === "rock") ||
+        (player === "scissors" && computer === "paper")
+    ) {
+        return `Du vann! ${player} beats ${computer}.`;
+    } else {
+        return `Du forlorade! ${computer} beats ${player}.`;
+    }
+}
+

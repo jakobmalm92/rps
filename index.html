@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="sv">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sten Sax Påse</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-      integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
     <div id="startPage">
-      <h1>Välkommen till Sten Sax Påse-spelet</h1>
-      <form id="nameForm">
-        <label for="name">Skriv ditt namn</label>
-        <input type="text" id="name" required />
-        <button type="submit" id="sartGameBtn">Starta spelet</button>
-      </form>
+        <h1>Välkommen till Sten Sax Påse!</h1>
+        <form id="nameForm">
+            <label for="name">Skriv ditt namn:</label>
+            <input type="text" id="name" required>
+            <button type="submit" id="startGameBtn">Starta Spelet</button>
+        </form>
     </div>
 
     <div id="gamePage" style="display: none;">
@@ -31,7 +25,7 @@
             <div id="computer-label" class="badge">Computer: </div>
             <span id="user-score">0</span>:<span id="computer-score">0</span>
         </div>
-        <h1>Rock Paper Scissors Game</h1>
+        <h1>Sten Sax Påse</h1>
         
         <div class="choices">
             <div class="choice" id="rock">
@@ -47,5 +41,8 @@
         
         <div class="result"></div>
     </div>
-  </body>
+
+    <script src="script.js" defer></script>
+</body>
 </html>
+
