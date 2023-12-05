@@ -34,7 +34,7 @@ startGameBtn.addEventListener("click", function (event) {
     playerName = document.getElementById("name").value;
 
     if (!playerName) {
-        alert("Skriv in ditt namn!");
+        alert("Please enter your name before starting the game.");
         return;
     }
 
@@ -48,7 +48,7 @@ choices.forEach(choice => {
     choice.addEventListener("click", function () {
         const playerChoice = choice.id;
         const computerChoice = getComputerChoice();
-        const result = winner(playerChoice, computerChoice);
+        const result = determineWinner(playerChoice, computerChoice);
         resultDisplay.textContent = result;
 
         if (result.includes("win")) {
@@ -68,17 +68,17 @@ function getComputerChoice() {
     return choices[randomIndex];
 }
 
-function winner(player, computer) {
+function determineWinner(player, computer) {
     if (player === computer) {
-        return "Oavgjort!";
+        return "It's a tie!";
     } else if (
         (player === "rock" && computer === "scissors") ||
         (player === "paper" && computer === "rock") ||
         (player === "scissors" && computer === "paper")
     ) {
-        return `Du vann! ${player} beats ${computer}.`;
+        return `You win! ${player} beats ${computer}.`;
     } else {
-        return `Du forlorade! ${computer} beats ${player}.`;
+        return `You lose! ${computer} beats ${player}.`;
     }
 }
 

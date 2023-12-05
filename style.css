@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#startPage {
+    text-align: center;
+    margin-top: 50px;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+form {
+    margin-top: 30px;
+}
+
+label {
+ font-size: 20px;
+ margin-right: 10px;
+ color: brown;  
+}
+
+input {
+   padding: 5px; 
+   font-size: 14px;
+   border-color: brown;
+}
+
+button {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin-left: 10px;
+    background-color: brown;
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+}
