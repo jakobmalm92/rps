@@ -9,6 +9,7 @@ const resultDisplay = document.querySelector(".result");
 const userScoreSpan = document.getElementById("user-score");
 const computerScoreSpan = document.getElementById("computer-score");
 const homeBtn = document.getElementById("homeBtn");
+const resetBtn = document.getElementById("resetBtn");
 
 let playerName = ""; //Håller reda på spelarnamnet
 let userScore = 0; //Poängen för användare
@@ -21,6 +22,8 @@ const storedComputerScore = localStorage.getItem("computerScore");
 playerName = storedPlayerName || ""; //Värdet för spelarnamnet som hämtas från localStorage
 userScore = parseInt(storedUserScore) || 0; //Innehåller värdet för användarens poäng
 computerScore = parseInt(storedComputerScore) || 0;
+
+
 
 homeBtn.addEventListener("click", function (event) {
 
@@ -61,6 +64,17 @@ startGameBtn.addEventListener("click", function (event) {
   startPage.style.display = "none"; //Döljer startsidan
   gamePage.style.display = "block"; //Visar spelarsidan
 });
+
+resetBtn.addEventListener("click", function () {
+    // Nollställ poäng och uppdatera localStorage
+    userScore = 0;
+    computerScore = 0;
+    localStorage.setItem("userScore", userScore);
+    localStorage.setItem("computerScore", computerScore);
+  
+    // Uppdatera UI
+    updateUI();
+  });
 
 choices.forEach((choice) => {
   choice.addEventListener("click", function () {
