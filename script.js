@@ -1,4 +1,4 @@
-const startPage = document.getElementById("startPage");
+const startPage = document.getElementById("startPage"); //Hämtar in alla mina HTML-element
 const gamePage = document.getElementById("gamePage");
 const nameForm = document.getElementById("nameForm");
 const startGameBtn = document.getElementById("startGameBtn");
@@ -10,23 +10,36 @@ const userScoreSpan = document.getElementById("user-score");
 const computerScoreSpan = document.getElementById("computer-score");
 const homeBtn = document.getElementById("homeBtn");
 
-let playerName = "";
-let userScore = 0;
-let computerScore = 0;
+let playerName = ""; //Håller reda på spelarnamnet
+let userScore = 0; //Poängen för användare
+let computerScore = 0; //Poäng för dator
+
+const storedPlayerName = localStorage.getItem("playerName"); //Hämtar tidigare sparad data från spelarnamn
+const storedUserScore = localStorage.getItem("userScore"); //Hämtar tidigare sparad poäng
+const storedComputerScore = localStorage.getItem("computerScore");
+
+
+playerName = storedPlayerName || ""; //Finns det inget sparat används en tom sträng
+userScore = parseInt(storedUserScore) || 0;
+computerScore = parseInt(storedComputerScore) || 0;
+
+updateUI();
 
 homeBtn.addEventListener("click", function (event) {
-    startPage.style.display = "block"; //Visas
-    gamePage.style.display = "none"; //Göms
+    startPage.style.display = "block";
+    gamePage.style.display = "none";
 
+    
     userScore = 0;
     computerScore = 0;
-    userScoreSpan.textContent = userScore; //Nollställer spelet vid ny omgång
-    computerScoreSpan.textContent = computerScore; //Nollställer spelet vid ny omgång
-    resultDisplay.textContent = "";
-    playerNameDisplay.textContent = "";
-    userLabel.textContent = "";
 
-    nameForm.reset(); //Återställer alla inmatade värden till 0
+    updateUI();
+
+    localStorage.removeItem("playerName");
+    localStorage.removeItem("userScore");
+    localStorage.removeItem("computerScore");
+
+    nameForm.reset();
 });
 
 startGameBtn.addEventListener("click", function (event) {
@@ -37,6 +50,8 @@ startGameBtn.addEventListener("click", function (event) {
         alert("Skriv in ditt namn");
         return;
     }
+
+    localStorage.setItem("playerName", playerName);
 
     playerNameDisplay.textContent = `Player: ${playerName}`;
     userLabel.textContent = playerName;
@@ -57,8 +72,11 @@ choices.forEach(choice => {
             computerScore++;
         }
 
-        userScoreSpan.textContent = userScore;
-        computerScoreSpan.textContent = computerScore;
+        
+        localStorage.setItem("userScore", userScore);
+        localStorage.setItem("computerScore", computerScore);
+
+        updateUI();
     });
 });
 
@@ -81,4 +99,10 @@ function winner(player, computer) {
         return "Du förlorade!";
     }
 }
+
+function updateUI() {
+    userScoreSpan.textContent = userScore;
+    computerScoreSpan.textContent = computerScore;
+}
+
 

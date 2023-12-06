@@ -17,7 +17,7 @@ body {
 h1 {
     font-size: 50px;
     font-weight: bold;
-    color: rgb(5, 11, 48);
+    color: rgb(15, 17, 17);
     letter-spacing: 1px;
     
 }
@@ -132,6 +132,15 @@ input {
     cursor: pointer;
     background: rgb(116, 116, 136);
 }
+
+
+@media only screen and (min-width: 1024px) {
+    #startPage {
+        max-width: 100%;
+    }
+}
+
+
 
 
 
