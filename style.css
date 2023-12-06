@@ -158,8 +158,31 @@ input {
 }
 
 @media only screen and (max-width: 768px) {
-    #choises {
-        display: grid;
-        grid-template-columns: 1fr;
+    #homeBtn {
+        margin: 20px auto 0;
+        display: block;
+    }
+    
+    .score-board {
+        width: 50%;
+    }
+    .choices {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+    }
+
+    .choice {
+        margin: 10px 0; 
+        padding: 20px; 
+    }
+
+    .choice i {
+        font-size: 7em; 
     }
 }
+
+
+
+ 
+  
