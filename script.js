@@ -23,58 +23,56 @@ playerName = storedPlayerName || ""; //Värdet för spelarnamnet som hämtas fr�
 userScore = parseInt(storedUserScore) || 0; //Innehåller värdet för användarens poäng
 computerScore = parseInt(storedComputerScore) || 0;
 
-
-
 homeBtn.addEventListener("click", function (event) {
+  setTimeout(function () {
+    startPage.style.display = "block"; //Visar startsidan
+    gamePage.style.display = "none"; //Döljer spelarsidan
+    resultDisplay.textContent = "";
 
-  setTimeout(function () {  
-  startPage.style.display = "block"; //Visar startsidan
-  gamePage.style.display = "none"; //Döljer spelarsidan
-  resultDisplay.textContent = "";
+    userScore = 0; //Återställer användarens poäng
+    computerScore = 0; //Återställer datorns poäng
 
+    localStorage.removeItem("playerName"); //Ta bort spelarnamn från localStorage
+    localStorage.removeItem("userScore"); //Ta bort användarens poäng från localStorage
+    localStorage.removeItem("computerScore"); //Ta bort datorns poäng från localStorage
 
-  userScore = 0; //Återställer användarens poäng
-  computerScore = 0; //Återställer datorns poäng
+    nameForm.reset();
 
-  localStorage.removeItem("playerName"); //Ta bort spelarnamn från localStorage
-  localStorage.removeItem("userScore");//Ta bort användarens poäng från localStorage
-  localStorage.removeItem("computerScore");//Ta bort datorns poäng från localStorage
+    updateUI(); //Uppdaterar UI
 
-  nameForm.reset();
-
-  updateUI(); //Uppdaterar UI
-
-}, 100);
+    gamePage.classList.remove("hidden");
+    startPage.classList.add("hidden");
+  }, 100);
 });
 
 startGameBtn.addEventListener("click", function (event) {
-    console.log("Start game button clicked");
   event.preventDefault();
-  playerName = document.getElementById("name").value;//Hämtar värdet i input och tilldelar det till playerName
+  playerName = document.getElementById("name").value; //Hämtar värdet i input och tilldelar det till playerName
 
-  if (!playerName) { //Kontrollerar om spelarnamnet är tomt
+  if (!playerName) {
+    //Kontrollerar om spelarnamnet är tomt
     alert("Skriv in ditt namn");
     return;
   }
 
   localStorage.setItem("playerName", playerName); //Sparar spelarnamnet i localStorage för att komma ihåg det mellan sidladdningar
-
   playerNameDisplay.textContent = `Player: ${playerName}`; //Uppdaterar med det valda användarnamnet
   userLabel.textContent = playerName; //Uppdaterar med det valda användarnamnet
+
   startPage.style.display = "none"; //Döljer startsidan
   gamePage.style.display = "block"; //Visar spelarsidan
 });
 
 resetBtn.addEventListener("click", function () {
-    // Nollställ poäng och uppdatera localStorage
-    userScore = 0;
-    computerScore = 0;
-    localStorage.setItem("userScore", userScore);
-    localStorage.setItem("computerScore", computerScore);
-  
-    // Uppdatera UI
-    updateUI();
-  });
+  // Nollställ poäng och uppdatera localStorage
+  userScore = 0;
+  computerScore = 0;
+  localStorage.setItem("userScore", userScore);
+  localStorage.setItem("computerScore", computerScore);
+
+  // Uppdatera UI
+  updateUI();
+});
 
 choices.forEach((choice) => {
   choice.addEventListener("click", function () {
@@ -85,14 +83,15 @@ choices.forEach((choice) => {
     resultDisplay.textContent = "";
     resultDisplay.textContent = result; //Uppdaterar resultatet från användare och dator och tilldelar resultat
 
-    if (result.includes("vann")) { //Uppdaterar användarens och datorns poäng beroende för resultat
+    if (result.includes("vann")) {
+      //Uppdaterar användarens och datorns poäng beroende för resultat
       userScore++;
     } else if (result.includes("förlorade")) {
       computerScore++;
     }
 
-    localStorage.setItem("userScore", userScore); //Sparar användarens poäng i localStorage 
-    localStorage.setItem("computerScore", computerScore); //Sparar datorns poäng i localStorage 
+    localStorage.setItem("userScore", userScore); //Sparar användarens poäng i localStorage
+    localStorage.setItem("computerScore", computerScore); //Sparar datorns poäng i localStorage
 
     updateUI(); //Uppdaterar med dem nya poängen
   });
@@ -118,7 +117,8 @@ function winner(player, computer) {
   }
 }
 
-function updateUI() { //Uppdaterar poängen på webbsidan
+function updateUI() {
+  //Uppdaterar poängen på webbsidan
   userScoreSpan.textContent = userScore;
   computerScoreSpan.textContent = computerScore;
 }

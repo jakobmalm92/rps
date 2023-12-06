@@ -19,6 +19,7 @@ h1 {
   font-weight: bold;
   color: rgb(15, 17, 17);
   letter-spacing: 1px;
+  font-family: "Courier New", Courier, monospace;
 }
 
 form {
@@ -46,6 +47,11 @@ input {
   cursor: pointer;
   letter-spacing: 1px;
   border-color: brown;
+  
+}
+
+.hidden {
+    display: none;
 }
 
 #homeBtn {
@@ -88,7 +94,7 @@ input {
 }
 
 .badge {
-  background: rgb(134, 65, 65);
+  background: brown;
   color: white;
   font-size: 20px;
   padding: 2px 5px;
@@ -149,4 +155,11 @@ input {
   #startPage {
     max-width: 100%;
   }
+}
+
+@media only screen and (max-width: 768px) {
+    #choises {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
 }
