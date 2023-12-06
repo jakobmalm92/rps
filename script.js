@@ -23,8 +23,12 @@ userScore = parseInt(storedUserScore) || 0; //Innehåller värdet för användar
 computerScore = parseInt(storedComputerScore) || 0;
 
 homeBtn.addEventListener("click", function (event) {
+
+  setTimeout(function () {  
   startPage.style.display = "block"; //Visar startsidan
   gamePage.style.display = "none"; //Döljer spelarsidan
+  resultDisplay.textContent = "";
+
 
   userScore = 0; //Återställer användarens poäng
   computerScore = 0; //Återställer datorns poäng
@@ -34,9 +38,14 @@ homeBtn.addEventListener("click", function (event) {
   localStorage.removeItem("computerScore");//Ta bort datorns poäng från localStorage
 
   nameForm.reset();
+
+  updateUI(); //Uppdaterar UI
+
+}, 100);
 });
 
 startGameBtn.addEventListener("click", function (event) {
+    console.log("Start game button clicked");
   event.preventDefault();
   playerName = document.getElementById("name").value;//Hämtar värdet i input och tilldelar det till playerName
 
@@ -55,28 +64,30 @@ startGameBtn.addEventListener("click", function (event) {
 
 choices.forEach((choice) => {
   choice.addEventListener("click", function () {
-    const playerChoice = choice.id;
-    const computerChoice = getComputerChoice();
-    const result = winner(playerChoice, computerChoice);
-    resultDisplay.textContent = result;
+    console.log("Choice clicked");
+    const playerChoice = choice.id; //Hämtar id för det val användaren klickade på
+    const computerChoice = getComputerChoice(); //Datorns slummässiga val och tilldelar det åt computerChoice
+    const result = winner(playerChoice, computerChoice); //Hämtar resultat från användare och dator och tilldelar resultat
+    resultDisplay.textContent = "";
+    resultDisplay.textContent = result; //Uppdaterar resultatet från användare och dator och tilldelar resultat
 
-    if (result.includes("vann")) {
+    if (result.includes("vann")) { //Uppdaterar användarens och datorns poäng beroende för resultat
       userScore++;
     } else if (result.includes("förlorade")) {
       computerScore++;
     }
 
-    localStorage.setItem("userScore", userScore);
-    localStorage.setItem("computerScore", computerScore);
+    localStorage.setItem("userScore", userScore); //Sparar användarens poäng i localStorage 
+    localStorage.setItem("computerScore", computerScore); //Sparar datorns poäng i localStorage 
 
-    updateUI();
+    updateUI(); //Uppdaterar med dem nya poängen
   });
 });
 
 function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
+  const choices = ["rock", "paper", "scissors"]; //Dem olika möjliga valen för datorn
+  const randomIndex = Math.floor(Math.random() * choices.length); //Hämtar slummässiga val från datorn
+  return choices[randomIndex]; //Retunerar slummässiga val från datorn
 }
 
 function winner(player, computer) {
@@ -93,7 +104,7 @@ function winner(player, computer) {
   }
 }
 
-function updateUI() {
+function updateUI() { //Uppdaterar poängen på webbsidan
   userScoreSpan.textContent = userScore;
   computerScoreSpan.textContent = computerScore;
 }
