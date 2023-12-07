@@ -23,6 +23,8 @@ playerName = storedPlayerName || ""; //Värdet för spelarnamnet som hämtas fr�
 userScore = parseInt(storedUserScore) || 0; //Innehåller värdet för användarens poäng
 computerScore = parseInt(storedComputerScore) || 0;
 
+
+//HEM-KNAPP FÖR NY ANVÄNDARE
 homeBtn.addEventListener("click", function (event) {
   setTimeout(function () {
     startPage.style.display = "block"; //Visar startsidan
@@ -45,6 +47,7 @@ homeBtn.addEventListener("click", function (event) {
   }, 100);
 });
 
+//STARTA SPEL KNAPP
 startGameBtn.addEventListener("click", function (event) {
   event.preventDefault();
   playerName = document.getElementById("name").value; //Hämtar värdet i input och tilldelar det till playerName
@@ -63,12 +66,17 @@ startGameBtn.addEventListener("click", function (event) {
   gamePage.style.display = "block"; //Visar spelarsidan
 });
 
+
+
 resetBtn.addEventListener("click", function () {
   // Nollställ poäng och uppdatera localStorage
   userScore = 0;
   computerScore = 0;
   localStorage.setItem("userScore", userScore);
   localStorage.setItem("computerScore", computerScore);
+
+  resultDisplay.textContent = "";
+  
 
   // Uppdatera UI
   updateUI();
